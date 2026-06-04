@@ -1,9 +1,60 @@
 -- Change XX to your initials before running this script, so that you will have your own copy of this database for the review
 
+--*how to view all the different tables*
 SELECT * FROM Owners;
 SELECT * FROM Homes;
 SELECT * FROM ForSale;
 SELECT * FROM Realtors;
+
+--*how to add a new homeowner to the Owners table
+INSERT INTO Owners
+VALUES ('Mala Patua');
+
+--*how to add a new home to the homes table, where the owner is unknown at this time.
+INSERT INTO Homes
+VALUES('670 Eagle Drive', 'Salt Lake City', 'UT', NULL);
+
+--*write query to display homeowner name, home address, city and state. Sort alphabetically by homeowner name.
+SELECT OwnerName, HomeAddress, HomeCity, HomeState
+FROM Owners, Homes
+ORDER BY OwnerName Asc;
+
+--*modify query from prompt 3 to also show the homes with no owner.
+SELECT OwnerName, HomeAddress, HomeCity, HomeState
+FROM Homes
+LEFT JOIN Owners
+ON Homes.OID = Owners.OID
+ORDER BY OwnerName;
+
+--*list the realtors name, name of the month(SalesMonth), the year(SaleYear) and the number of listings that each realtor had for that month and year. 
+--*restrict the results to not show months when a realtor only had one home listed. 
+--*only include homes listed for sale in the year 2019. sort alphabetically by realtor name and put each realtors best month(most listings) at the top of the list.
+
+SELECT RealtorName, DATENAME(MONTH, f.ListDate) AS SalesMonth, YEAR(f.ListDate) AS SaleYear, COUNT(f.ListID) AS NumberOfListings
+FROM ForSale
+
+ORDER BY RealtorName ASC;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 CREATE DATABASE RealEstate_TP;

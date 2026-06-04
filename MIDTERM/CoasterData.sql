@@ -1,3 +1,33 @@
+
+SELECT * FROM CoasterType;
+SELECT * FROM Parks;
+SELECT * FROM Coasters;
+
+--QUESTION 2
+INSERT INTO CoasterType
+VALUES ('Morris Lapbar', '1967-07-18');
+
+--QUESTION 3
+SELECT CoasterTypeName, CoasterTypeID
+FROM CoasterType;
+
+--QUESTION 4
+SELECT ParkName, CoasterName, InspectionDate
+FROM Parks, Coasters, CoasterType
+WHERE CoasterTypeName > 7
+;
+
+SELECT ParkName, SafetyStatus
+FROM Parks, Coasters
+WHERE SafetyStatus = 'good'
+
+;
+
+
+
+
+
+
 CREATE DATABASE RollerCoasters_TP;
 GO
 
